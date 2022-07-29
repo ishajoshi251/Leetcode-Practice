@@ -1,0 +1,10 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        str1 = ""
+        if digits[-1]<9:
+            digits[-1] += 1
+            return digits
+        for i in digits:
+            str1 += str(i)
+        result = int(str1) + 1
+        return str(result)

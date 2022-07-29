@@ -1,0 +1,16 @@
+class Solution:
+    def oddCells(self, m: int, n: int, indices: List[List[int]]) -> int:
+        rows = [0]*m
+        cols = [0]*n
+        for row,col in indices:
+            rows[row] += 1
+            cols[col] += 1
+        odd_count = 0
+        
+        for i in rows:
+            for j in cols:
+                val = i + j
+                if val % 2 != 0:
+                    odd_count += 1
+        return odd_count
+           

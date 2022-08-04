@@ -1,0 +1,24 @@
+for i in range(k):
+            a = nums.pop()
+            nums.insert(0,a)
+        return nums
+        
+        
+       
+       class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        k = len(nums) == same list
+        if k>len to k%l krlo
+        the reverse
+        then k ko reverse kro
+        then remaining ko reverse kro
+        """
+        if k == len(nums):
+            return nums
+        k = k%len(nums)
+        nums[:]= reversed(nums[:])
+        nums[:k] = reversed(nums[:k])
+        nums[k:] = reversed(nums[k:])
+        return nums

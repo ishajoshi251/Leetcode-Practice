@@ -1,0 +1,16 @@
+class Solution:
+    def interpret(self, command: str) -> str:
+        '''
+        command = command.replace('()','o')
+        command = command.replace('(al)','al')
+        return command '''
+        res = ''
+        tmp = ''
+        d ={'G':'G','()':'o','(al)':'al'}
+        for i in command:
+            tmp += i
+            if tmp in d:
+                res += d[tmp]
+                tmp =''
+        return res
+                    

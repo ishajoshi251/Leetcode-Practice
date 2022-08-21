@@ -1,0 +1,21 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
+        ss = ""
+        for i in s:
+            if 'a'<=i<='z' or '0'<=i<='9':
+                ss += i
+        if len(ss) == 0:
+            return True
+        if len(ss) == 1:
+            return True
+        j = len(ss)-1
+        i = 0
+        while i<j:
+            if ss[i] == ss[j]:
+                i += 1
+                j -= 1
+            else:
+                return False
+        return True
+            

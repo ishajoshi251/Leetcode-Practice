@@ -1,0 +1,14 @@
+class Solution:
+    def sortSentence(self, s: str) -> str:
+        s = s.split()
+        res= [0]*(len(s)+1)
+        for i in range(len(s)):
+            res[int(s[i][-1])] = s[i][:-1]
+        ss=""
+        ss = res[1]
+        for i in range(2,len(res)):
+            ss += " "
+            ss += res[i]
+        return ss
+                
+                

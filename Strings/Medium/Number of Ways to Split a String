@@ -1,0 +1,20 @@
+class Solution:
+    def numWays(self, s: str) -> int:
+        ones = s.count('1')
+        n = len(s)
+        m = 1000000007
+        if ones == 0:
+            return ((n-1)*(n-2)//2) %m
+        if ones%3 != 0:
+            return 0
+        ones_ineach = ones//3
+        count = oneway = twoway = 0
+        for i in s:
+            if i == '1':
+                count += 1
+            if count == ones_ineach:
+                oneway += 1
+            elif count == 2*ones_ineach:
+                twoway += 1
+        return (oneway*twoway)%m
+        

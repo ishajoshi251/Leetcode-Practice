@@ -1,0 +1,13 @@
+class Solution:
+    def countHomogenous(self, s: str) -> int:
+        mod = 10**9+7
+        count = 0
+        ans = 0
+        for i in range(len(s)):
+            if i>0  and s[i-1] == s[i]:
+                count += 1
+            else:
+                count = 1
+            ans += count
+                
+        return ans%mod

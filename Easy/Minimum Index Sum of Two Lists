@@ -1,0 +1,11 @@
+class Solution:
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
+        result = []
+        commons = set(list1).intersection(set(list2))
+        combos = {}
+        for item in commons:
+            combos[item] = list1.index(item)+list2.index(item)
+        for key, value in combos.items():
+            if value == min(combos.values()):
+                result.append(key)
+        return result

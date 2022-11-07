@@ -1,0 +1,14 @@
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        com = []
+        self.gen(0,candidates,[],com,target)
+        return com
+    def gen(self, start:int,candidates: List[int],temp: List[int],com: List[int],target:int) -> List[List[int]]:
+        if target == 0:
+           com.append(temp.copy())
+        if target <0:
+            return
+        for i in range(start,len(candidates)):
+            temp.append(candidates[i])
+            self.gen(i,candidates,temp,com,target-candidates[i])
+            temp.pop()

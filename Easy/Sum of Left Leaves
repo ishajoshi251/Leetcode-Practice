@@ -1,0 +1,29 @@
+class Solution(object):
+    def sumOfLeftLeaves(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root:
+            return 0 
+        s = 0
+        q = []
+        q.append(root)
+        while q:
+            n = len(q)
+            while n:
+                curr = q[0]
+                q.pop(0)
+                if curr.left and isleaf(curr.left):
+                    s += curr.left.val
+                if curr.left:
+                    q.append(curr.left)
+                if curr.right:
+                    q.append(curr.right)
+                n -= 1
+        return s
+def isleaf(root):
+    if not root.left and not root.right:
+        return True
+    else:
+        return False

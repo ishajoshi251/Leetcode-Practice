@@ -1,0 +1,37 @@
+class Solution(object):
+    def bestHand(self, ranks, suits):
+        """
+        :type ranks: List[int]
+        :type suits: List[str]
+        :rtype: str
+        """
+       
+        d = {}
+        for i in suits:
+            if i in d:
+                d[i] += 1
+                if d[i] == 5:
+                   return "Flush"
+                
+            else:
+                d[i] = 1
+        r = {}
+        for i in ranks:
+            if i in r:
+                r[i] += 1
+            else:
+                r[i] = 1
+        maxi = max(r.values())
+                
+        for i in r:
+            if maxi >= 3:
+               return "Three of a Kind"
+               break
+               
+            elif r[i] == 2:
+                return "Pair"
+           
+        return "High Card"
+
+                
+        

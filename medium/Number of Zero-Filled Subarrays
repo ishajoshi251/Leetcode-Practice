@@ -1,0 +1,16 @@
+class Solution(object):
+    def zeroFilledSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = l = 0
+        for i in nums:
+            if i == 0:
+                l += 1
+            elif l:
+                n += (l*(l+1))//2
+                l = 0
+        if l:
+             n += (l*(l+1))//2
+        return n

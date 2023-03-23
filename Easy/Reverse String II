@@ -1,0 +1,17 @@
+class Solution(object):
+    def reverseStr(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        a = ""
+        rev = s[:k][::-1]
+        a += rev
+        a += s[k:2*k]
+        
+        for i in range(2*k,len(s),2*k):
+            rev = s[i:i+k][::-1]
+            a += rev
+            a += s[i+k:i+2*k]
+        return a

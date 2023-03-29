@@ -1,0 +1,22 @@
+class Solution(object):
+    
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        ans = []
+        open = 0
+        close = 0
+        self.helper(n,open+1,close,'(',ans)
+        return ans
+
+    def helper(self,n,open,close,temp,ans):
+        if open ==n and close==n:
+            ans.append(temp)
+            return
+        if open<n:
+            self.helper(n,open+1,close,temp+'(',ans)
+        if open>close:
+            self.helper(n,open,close+1,temp+')',ans)
+            

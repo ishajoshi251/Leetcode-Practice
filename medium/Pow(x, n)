@@ -1,0 +1,15 @@
+class Solution(object):
+    def myPow(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :: float
+        """
+        
+        if n == -n:
+            a = x**(-n)
+            ans = 1/a
+        else:
+            a = x**n
+            ans = a
+        return float(ans)

@@ -1,0 +1,15 @@
+ potions.sort()
+        ans = []
+        spell = 0
+        for spell in spells:
+            i = 0
+            j = len(potions)-1 
+            while i <= j:
+                mid = i + (j - i) // 2
+                product = spell * potions[mid]
+                if product >= success:
+                    j = mid - 1
+                else:
+                    i = mid + 1
+            ans.append(len(potions)-i)
+        return ans

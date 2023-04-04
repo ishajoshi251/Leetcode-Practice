@@ -1,0 +1,24 @@
+class Solution(object):
+    def findTheLongestBalancedSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        n = len(s)
+        i = 0
+        count = 0
+        maxi = 0
+        for i in range(n):
+            if s[i] == '0':
+                continue
+            elif s[i] == '1':
+               back = i -1
+               forw = i
+               while (back>=0 and s[back] == '0') and (forw<n and s[forw] == '1'):
+                   count += 2
+                   back -= 1
+                   forw += 1
+               maxi = max(count,maxi)
+               count  = 0
+            
+        return maxi

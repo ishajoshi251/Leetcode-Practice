@@ -1,0 +1,13 @@
+class Solution(object):
+    def minimizeArrayValue(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        prefix_sum = 0
+        ans=0
+        for i in range(len(nums)):
+            prefix_sum += nums[i]
+            a = (prefix_sum+i)//(i+1)
+            ans = max(ans,a)
+        return ans

@@ -1,0 +1,60 @@
+from typing import List
+
+class Solution:    
+    def numberOfEnclaves(self, mat: List[List[int]]) -> int:
+        # code here
+        count=0
+
+        n= len(mat)
+
+        m = len(mat[0])
+
+        visited = [[False for i in range(m)] for j in range(n)]
+
+        delrow=[-1,0,1,0]
+
+        delcol=[0,1,0,-1]
+
+        # print(visited)
+
+        for i in range(len(mat)):
+
+            for j in range(len(mat[0])):
+
+                if(mat[i][j]==1):
+
+                    if((i==0 or i==n-1 or j==0 or j==m-1) and visited[i][j]==False ):
+
+                        self.dfs(i,j,visited,n,m,mat,delrow,delcol)
+
+         
+
+        for i in range(n):
+
+            for j in range(m):
+
+                if(mat[i][j]==1 and visited[i][j]==False):
+
+                    count+=1
+
+        return count
+
+        
+
+    def dfs(self,row,col,visited,n,m,mat,delrow,delcol):
+
+        
+
+        visited[row][col]=True
+
+        for i in range(len(delrow)):
+
+            nr = row + delrow[i]
+
+            nc = col + delcol[i]
+
+            
+
+            if(nr>=0 and nr<n and nc>=0 and nc<m and mat[nr][nc]==1 and visited[nr][nc]==False):
+
+                self.dfs(nr,nc,visited,n,m,mat,delrow,delcol)

@@ -1,0 +1,35 @@
+class Solution(object):
+    def simplifyPath(self, path):
+        """
+        :type path: str
+        :rtype: str
+        """
+        
+        st = []
+        res = ""
+        
+        i = 0
+        while i < len(path):
+            if path[i] == '/':
+                i += 1
+                continue
+            temp = ""
+            while i < len(path) and path[i] != '/':
+                temp += path[i]
+                i += 1
+            if temp == ".":
+                continue
+            elif temp == "..":
+                if len(st) > 0:
+                    st.pop()
+            else:
+                st.append(temp)
+        
+        while len(st) > 0:
+            res = "/" + st[-1] + res
+            st.pop()
+        
+        if len(res) == 0:
+            return "/"
+        
+        return res

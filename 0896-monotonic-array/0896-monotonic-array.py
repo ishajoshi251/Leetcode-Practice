@@ -4,9 +4,32 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        if nums == sorted(nums):
-            return True
-        elif nums == sorted(nums,reverse=True):
-            return True
+        flag = 0
+        i = j =0
+        for i in range(len(nums)-1):
+            if nums[i] < nums[i+1]:
+                flag = 1
+                break
+            elif nums[i]>nums[i+1]:
+                break
+        
+        if flag == 1:
+            while i<len(nums)-1:
+                if nums[i] <= nums[i+1]:
+                    i += 1
+                    
+                else:
+                    return False
+                
         else:
-            return False
+            while j<len(nums)-1:
+                if nums[j] >= nums[j+1]:
+                    j += 1
+                    
+                else:
+                    return False
+                
+        return True
+            
+        
+            

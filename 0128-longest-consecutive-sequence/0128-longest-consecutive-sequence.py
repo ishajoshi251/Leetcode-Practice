@@ -15,6 +15,6 @@ class Solution(object):
                 while curr+1 in s:
                     curr = curr+1
                     l += 1
-                maxi = max(maxi,l)
+            maxi = max(maxi,l)
         return maxi
                 

@@ -12,7 +12,6 @@ class Solution:
                 ans.append(A[i])
                 maxi = A[i]
         return ans[::-1]
-            
 
 #{ 
  # Driver Code Starts

@@ -3,16 +3,13 @@
 class Solution:
     def maxDepth(self, s):
         # Code here
-        new = ""
-        for i in s:
-            if i == '(' or i == ')':
-                new += i
+       
         count = 0
         maxi = 0
-        for i in new:
+        for i in s:
             if i =='(':
                 count += 1
-            else:
+            elif i == ')':
                 count -= 1
             maxi = max(count,maxi)
         return maxi

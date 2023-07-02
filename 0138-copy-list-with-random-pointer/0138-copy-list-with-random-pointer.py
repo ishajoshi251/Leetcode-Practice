@@ -28,9 +28,9 @@ class Solution:
         itr = head
     
         while itr:
-            ans.next = itr.next
-            ans = ans.next
-            itr.next = ans.next
-            itr = itr.next
+            ans.next = itr.next   #1* 2*
+            ans = ans.next        #1* 2*
+            itr = ans.next   #2 3
+            
         return dummy.next
                 

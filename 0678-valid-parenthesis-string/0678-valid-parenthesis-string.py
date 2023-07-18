@@ -14,16 +14,13 @@ class Solution:
                     star_stack.pop()
                 else:
                     return False
-                
         while open_stack and star_stack:
             if open_stack[-1]>star_stack[-1]:
                 return False
-               
             open_stack.pop()
             star_stack.pop()
-        if not open_stack:
-            return True
-        else:
+        if open_stack:
             return False
-            
-            
+        else:
+            return True
+                

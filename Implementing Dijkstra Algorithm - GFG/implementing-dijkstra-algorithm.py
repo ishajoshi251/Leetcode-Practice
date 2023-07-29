@@ -5,36 +5,20 @@ class Solution:
     #from the source vertex S.
     def dijkstra(self, V, adj, S):
         #code here
-        
-
-
-    # Create a DIST ARRAY and mark as dist infinite
-        dist = [float('inf')] * V
-    
-        # Priority queue (min heap) to store nodes with their distances
-        pq = []
-    
-        # Source node dist is zero
+        dist = [float('inf')]*V
+        heap = []
+        heapq.heappush(heap,[0,S])
         dist[S] = 0
-    
-        # Push source node with dist into the priority queue
-        heapq.heappush(pq, (0, S))
-    
-        while pq:
-            dis, node = heapq.heappop(pq)
-    
-            # Explore the neighbors of the current node
-            for it in adj[node]:
-                adjNode, adjWeight = it[0], it[1]
-    
-                # If a shorter path is found, update the distance and add it to the priority queue
-                if dis + adjWeight < dist[adjNode]:
-                    dist[adjNode] = dis + adjWeight
-                    heapq.heappush(pq, (dist[adjNode], adjNode))
-    
+        while heap:
+            d,node = heapq.heappop(heap)
+            for i in range(len(adj[node])):
+                v = adj[node][i][0]
+                w = adj[node][i][1]
+                if d+w<dist[v]:
+                    dist[v] = d+w
+                    heapq.heappush(heap,[d+w,v])
+                
         return dist
-
-
 
 #{ 
  # Driver Code Starts

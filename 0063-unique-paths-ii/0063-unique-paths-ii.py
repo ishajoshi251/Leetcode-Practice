@@ -2,17 +2,27 @@ class Solution:
     def uniquePathsWithObstacles(self, grid: List[List[int]]) -> int:
         n = len(grid)
         m = len(grid[0])
-        if grid[0][0] == 1 or grid[n-1][m-1] == 1:
+        if grid[0][0] == 1 or grid[-1][-1] == 1:
             return 0
-            
-        path = [[0]*m for _ in range(n)]
-        path[0][0] = 1
-        for r in range(n):
-            for c in range(m):
-                if grid[r][c] == 1:
+        dp = [[0 for j in range(m)]for i in range(n)]
+        flag = False
+        for i in range(m):
+            if grid[0][i] == 1 or flag:
+                dp[0][i] = 0
+                flag = True
+            else:
+                dp[0][i] = 1
+        flag = False
+        for i in range(n):
+            if grid[i][0] == 1 or flag:
+                dp[i][0] = 0
+                flag = True
+            else:
+                dp[i][0] = 1
+        for i in range(1,n):
+            for j in range(1,m):
+                if grid[i][j] == 1:
                     continue
-                if r-1 >= 0:
-                    path[r][c] += path[r-1][c]
-                if c-1 >= 0:
-                    path[r][c] += path[r][c-1]
-        return path[n-1][m-1]
+                else:
+                    dp[i][j] = dp[i-1][j]+dp[i][j-1]
+        return dp[-1][-1]

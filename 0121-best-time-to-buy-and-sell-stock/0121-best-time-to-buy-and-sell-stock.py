@@ -1,14 +1,12 @@
-class Solution(object):
-    def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-        mini = 100000000
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        mini = prices[0]
         maxi = 0
-        for i in range(len(prices)):
+        for i in range(1,len(prices)):
+            maxi = max( prices[i]-mini,maxi)
+            
             mini = min(mini,prices[i])
-            if prices[i]>mini:
-                maxi = max(maxi,prices[i]-mini)
+           
         return maxi
-        
+            

@@ -1,21 +1,24 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        
+        ans = []
         nums.sort()  
-        if len(nums) < 3:  
-            return []
-        if nums[0] > 0:  
-            return []
-
-        hashMap = {}  
-        for i in range(len(nums)):
-            hashMap[nums[i]] = i  
-
-        answer = []  
-        for i in range(len(nums) - 2):  
-            for j in range(i + 1, len(nums) - 1):  
-                required = 0-(nums[i]+nums[j])
-                if required in hashMap and hashMap[required] > j: 
-                    if [nums[i], nums[j], required] not in answer:
-                        answer.append([nums[i], nums[j], required])  
-        return answer
+        n = len(nums)
+        for i in range(n-2):
+            j = i+1
+            k = n-1
+            while j<k:
+                s = nums[i]+nums[j]+nums[k]
+                if s == 0:
+                    ans.append([nums[i],nums[j],nums[k]])
+                   
+                    j += 1
+                    k -= 1
+                elif s>0:
+                    k -= 1
+                else:
+                    j += 1
+        new = []
+        for i in ans:
+            if i not in new:
+                new.append(i)
+        return new

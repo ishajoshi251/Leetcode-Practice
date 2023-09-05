@@ -1,16 +1,21 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        cur_hold, cur_not_hold = -float('inf'), 0
-        
-        for stock_price in prices:
-            
-            prev_hold, prev_not_hold = cur_hold, cur_not_hold
-            
-			# either keep hold, or buy in stock today at stock price
-            cur_hold = max( prev_hold, prev_not_hold - stock_price )
-			
-			# either keep not-hold, or sell out stock today at stock price
-            cur_not_hold = max( prev_not_hold, prev_hold + stock_price )
-            
-        # maximum profit must be in not-hold state
-        return cur_not_hold
+        def solve(ind,buy):
+            if ind==n:
+                return 0
+            if dp[ind][buy]!=-1:
+                return dp[ind][buy]
+            profit=0
+            if buy==0:
+                take=-prices[ind]+solve(ind+1,1)
+                not_take=0+solve(ind+1,0)
+                profit=max(take,not_take)
+            else:
+                take=prices[ind]+solve(ind+1,0)
+                not_take=0+solve(ind+1,1)
+                profit=max(take,not_take)
+            dp[ind][buy]=profit
+            return dp[ind][buy]
+        n=len(prices)
+        dp=[[-1, -1] for _ in range(n)]
+        return solve(0,0)
